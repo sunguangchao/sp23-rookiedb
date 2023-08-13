@@ -74,7 +74,7 @@ public class TestDatabase {
         try(Transaction t1 = db.beginTransaction()) {
             t1.createTable(s, tableName);
             RecordId rid = t1.getTransactionContext().addRecord(tableName, input);
-            t1.getTransactionContext().getRecord(tableName, rid);
+            final Record record = t1.getTransactionContext().getRecord(tableName, rid);
         }
     }
 
