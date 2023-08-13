@@ -30,6 +30,9 @@ public class TestDatabase {
     private Database db;
     private String filename;
 
+    /**
+     * https://stackoverflow.com/questions/13489388/how-does-junit-rule-work
+     */
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
