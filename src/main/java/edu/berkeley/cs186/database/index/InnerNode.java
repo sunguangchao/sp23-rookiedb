@@ -80,18 +80,22 @@ class InnerNode extends BPlusNode {
     // See BPlusNode.get.
     @Override
     public LeafNode get(DataBox key) {
-        // TODO(proj2): implement
-
-        return null;
+        // 找一个keys中不大于key的位置
+        final int i = numLessThanEqual(key, keys);
+        // 递归
+        return getChild(i).get(key);
     }
 
     // See BPlusNode.getLeftmostLeaf.
     @Override
     public LeafNode getLeftmostLeaf() {
         assert(children.size() > 0);
-        // TODO(proj2): implement
+        BPlusNode tmp = this;
+        while (tmp.getClass() != LeafNode.class){
+            tmp = ((InnerNode)tmp).getChild(0);
+        }
+        return (LeafNode) tmp;
 
-        return null;
     }
 
     // See BPlusNode.put.
